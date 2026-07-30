@@ -164,7 +164,7 @@
             );
         };
 
-        const Header = ({ customerData, callDuration }) => {
+        const Header = ({ customerData }) => {
             return (
                 <header className="bg-wec-dark text-white shadow-md z-10">
                     <div className="px-6 py-3 flex items-center justify-between">
@@ -253,7 +253,7 @@
                             Customer Context
                         </h2>
                         
-                        <div className="grid grid-cols-3 gap-6">
+                        <div className="grid grid-cols-2 gap-6">
                             {/* Intent Data from IVR */}
                             <div className="col-span-1 bg-red-50 rounded-lg p-4 border border-red-100">
                                 <h3 className="text-sm font-semibold text-red-800 mb-2 flex items-center gap-2">
@@ -279,35 +279,22 @@
                                         </span>
                                     </li>
                                     <li className="flex justify-between border-b border-slate-100 pb-1">
-                                        <span className="text-slate-500">Past Due Amount</span>
-                                        <span className="font-medium text-red-600">$452.80</span>
+                                        <span className="text-slate-500">Outstanding Balance</span>
+                                        <span className="font-medium text-red-600">$329.04</span>
                                     </li>
                                     <li className="flex justify-between border-b border-slate-100 pb-1">
-                                        <span className="text-slate-500">Last Payment</span>
-                                        <span className="font-medium">Feb 15, 2026 ($100.00)</span>
+                                        <span className="text-slate-500">Previous Bill</span>
+                                        <span className="font-medium">$154.20</span>
+                                    </li>
+                                    <li className="flex justify-between border-b border-slate-100 pb-1">
+                                        <span className="text-slate-500">Current Bill</span>
+                                        <span className="font-medium">$174.84</span>
                                     </li>
                                     <li className="flex justify-between pb-1">
                                         <span className="text-slate-500">Service Address</span>
                                         <span className="font-medium text-right max-w-[150px] truncate" title="123 Maple Street, Milwaukee, WI 53202">123 Maple St, Milwaukee</span>
                                     </li>
                                 </ul>
-                            </div>
-
-                            {/* Recent Activity */}
-                            <div className="col-span-1">
-                                <h3 className="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wide">Recent IVR Activity</h3>
-                                <div className="relative border-l border-slate-200 ml-2 space-y-4">
-                                    <div className="pl-4 relative">
-                                        <div className="absolute w-2 h-2 bg-wec-blue rounded-full -left-[4.5px] top-1.5"></div>
-                                        <p className="text-xs text-slate-500">Today, 8:40 AM</p>
-                                        <p className="text-sm font-medium">Started Payment Arrangement</p>
-                                    </div>
-                                    <div className="pl-4 relative">
-                                        <div className="absolute w-2 h-2 bg-slate-300 rounded-full -left-[4.5px] top-1.5"></div>
-                                        <p className="text-xs text-slate-500">Today, 8:38 AM</p>
-                                        <p className="text-sm">Authenticated via Phone #</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -330,7 +317,7 @@
                                     <p className="text-sm text-slate-500 mb-2 font-semibold">SUGGESTED SCRIPT</p>
                                     <p className="text-lg text-slate-800 italic font-medium leading-relaxed">
                                         "Thank you for calling WEC Energy. I see you were working in our automated system to set up a payment plan. I also understand you have concerns regarding a medical device that requires power. <br/><br/>
-                                        Before we address that, for your security, am I speaking with <span className="text-wec-blue font-bold">Robert Johnson</span>?"
+                                        Before we address that, for your security, am I speaking with <span className="text-wec-blue font-bold">Amelia Walker</span>?"
                                     </p>
                                 </div>
                                 <div className="space-y-3">
@@ -360,7 +347,7 @@
                                     </div>
                                     <p className="text-sm text-slate-500 mb-2 font-semibold mt-4">SUGGESTED SCRIPT</p>
                                     <p className="text-lg text-slate-800 italic font-medium leading-relaxed">
-                                        "Mr. Johnson, I want to reassure you right away that we take medical needs very seriously. Let's make sure we document this so your service is not interrupted while we figure out your payment plan. <br/><br/>
+                                        "Ms. Walker, I want to reassure you right away that we take medical needs very seriously. Let's make sure we document this so your service is not interrupted while we figure out your payment plan. <br/><br/>
                                         Can you tell me briefly about the medical equipment that requires electricity?"
                                     </p>
                                 </div>
@@ -388,88 +375,7 @@
                                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                                     <p className="text-sm text-slate-500 mb-2 font-semibold">SUGGESTED SCRIPT</p>
                                     <p className="text-lg text-slate-800 italic font-medium leading-relaxed">
-                                        "Thank you for sharing that. To protect your account from disconnection due to non-payment, we need a <strong>Medical Certification Form</strong> completed by your doctor or public health official. <br/><br/>
-                                        I am placing a 21-day temporary medical hold on your account right now to give you time to return the form. <br/><br/>
-                                        How would you like me to send you this form? We can mail it, email it, or you can download it from our website."
-                                    </p>
-                                </div>
-                                
-                                <div className="grid grid-cols-2 gap-4">
-                                    {}
-                                    <Button variant="outline" className="justify-start py-3"><Icon name="Mail" className="w-4 h-4" /> Email Form to Customer</Button>
-                                    <Button variant="outline" className="justify-start py-3"><Icon name="Printer" className="w-4 h-4" /> Mail Physical Form</Button>
-                                </div>
-                                
-                                <div className="p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-                                    <Icon name="CheckCircle" className="w-5 h-5 text-green-600 mt-0.5" />
-                                    <div>
-                                        <h4 className="font-semibold text-green-800">Action Required: Apply Temporary Hold</h4>
-                                        <p className="text-sm text-green-700 mt-1">Clicking the button below will apply a 21-day disconnect hold in the billing system.</p>
-                                        <Button className="mt-3 bg-green-600 hover:bg-green-700">Apply 21-Day Medical Hold</Button>
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-between pt-4 border-t border-slate-100">
-                                    <Button variant="secondary" onClick={() => handleNext('empathy')}><Icon name="ArrowLeft" className="w-4 h-4" /> Back</Button>
-                                    <Button onClick={() => handleNext('payment_plan')}>Review Payment Plan <Icon name="ArrowRight" className="w-4 h-4" /></Button>
-                                </div>
-                            </div>
-                        );
-                    case 'payment_plan':
-                        return (
-                            <div className="space-y-6 animate-fade-in">
-                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                    <p className="text-sm text-slate-500 mb-2 font-semibold">SUGGESTED SCRIPT</p>
-                                    <p className="text-lg text-slate-800 italic font-medium leading-relaxed">
-                                        "Now that we have the hold in place for your medical equipment, let's look at the payment plan you started in our automated system. <br/><br/>
-                                        I see a proposed arrangement to pay the past due amount of $452.80 over 4 months. That would be an additional $113.20 added to your current monthly bill. <br/><br/>
-                                        Does that arrangement work for your budget?"
-                                    </p>
-                                </div>
-                                
-                                <Card className="p-0 overflow-hidden">
-                                    <div className="bg-slate-100 p-3 border-b border-slate-200 flex justify-between items-center">
-                                        <h4 className="font-semibold text-slate-700">Proposed Arrangement (from IVR)</h4>
-                                        <Badge type="warning">Pending Confirmation</Badge>
-                                    </div>
-                                    <div className="p-4 grid grid-cols-2 gap-4">
-                                        <div>
-                                            <p className="text-xs text-slate-500 uppercase">Total Past Due</p>
-                                            <p className="text-xl font-semibold">$452.80</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-slate-500 uppercase">Installments</p>
-                                            <p className="text-xl font-semibold">4 Months</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-slate-500 uppercase">Installment Amount</p>
-                                            <p className="text-xl font-semibold text-wec-blue">+$113.20 / mo</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-slate-500 uppercase">First Payment Due</p>
-                                            <p className="text-xl font-semibold">Aug 15, 2026</p>
-                                        </div>
-                                    </div>
-                                    <div className="p-3 bg-slate-50 border-t border-slate-200 flex gap-3">
-                                        {}
-                                        <Button className="flex-1">Confirm Plan</Button>
-                                        <Button variant="outline" className="flex-1">Modify Plan</Button>
-                                    </div>
-                                </Card>
-
-                                <div className="flex justify-between pt-4">
-                                    <Button variant="secondary" onClick={() => handleNext('medical_cert')}><Icon name="ArrowLeft" className="w-4 h-4" /> Back</Button>
-                                    <Button onClick={() => handleNext('wrap_up')}>Proceed to Wrap Up <Icon name="ArrowRight" className="w-4 h-4" /></Button>
-                                </div>
-                            </div>
-                        );
-                    case 'wrap_up':
-                        return (
-                            <div className="space-y-6 animate-fade-in">
-                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                    <p className="text-sm text-slate-500 mb-2 font-semibold">SUGGESTED SCRIPT</p>
-                                    <p className="text-lg text-slate-800 italic font-medium leading-relaxed">
-                                        "Alright, Mr. Johnson. We have confirmed your payment arrangement, and I have placed the 21-day hold on your account for your medical equipment. <br/><br/>
+                                        "Alright, Ms. Walker. We have confirmed your payment arrangement, and I have placed the 21-day hold on your account for your medical equipment. <br/><br/>
                                         Please remember to have your doctor complete that Medical Certification form and return it to us before the 21 days are up. <br/><br/>
                                         Do you have any other questions for me today?"
                                     </p>
@@ -497,9 +403,9 @@
                                     
                                     <div className="mt-6 pt-4 border-t border-slate-200">
                                         <label className="block text-sm font-medium text-slate-700 mb-2">Disposition Code</label>
-                                        <select className="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-wec-blue outline-none">
+                                        <select defaultValue="Payment Plan + Medical Hold Processed" className="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-wec-blue outline-none">
                                             <option>Select Outcome...</option>
-                                            <option selected>Payment Plan + Medical Hold Processed</option>
+                                            <option>Payment Plan + Medical Hold Processed</option>
                                             <option>Information Provided</option>
                                             <option>Escalated to Supervisor</option>
                                         </select>
@@ -542,8 +448,8 @@
             const [currentStep, setCurrentStep] = React.useState('verification');
 
             const mockCustomerData = {
-                name: "Robert Johnson",
-                accountNumber: "8472-9910-33",
+                name: "Amelia Walker",
+                accountNumber: "12345",
                 intent: "Medical Equipment Power Concern + Payment Plan",
             };
 
